@@ -9,30 +9,37 @@
 
 ![Human Pose Estimation Bible cover](assets/cover.png)
 
-This repository presents **Human Pose Estimation Bible**, a collaborative graduation-project technical reference that connects computer vision fundamentals, mathematical and geometric reasoning, deep-learning architectures, evaluation methodology, and practical inference pipelines. It is intended as a navigable research-and-engineering resource—not simply a collection of pretrained-model demos.
+This repository presents **Human Pose Estimation Bible**, a collaborative graduation-project technical reference that connects computer vision fundamentals, mathematical and geometric reasoning, deep-learning architectures, evaluation methodology, and practical inference pipelines. Across four chapters and three practical case studies, it demonstrates a research-oriented AI Engineering mindset—not simply a collection of pretrained-model demos.
+
+## Read the Full HPE Bible
+
+**[Read the Full HPE Bible — PDF](docs/HPE-Bible.pdf)**<br>
+[Editable / source document (DOCX)](docs/HPE-Bible.docx)
+
+The PDF is the primary reading format; the DOCX is retained as the editable source version.
 
 ## Contents
 
 - [The Research Mindset Behind This Work](#the-research-mindset-behind-this-work)
-- [Why I Built This Technical Reference](#why-i-built-this-technical-reference)
+- [Why This Technical Reference Exists](#why-this-technical-reference-exists)
 - [Inside the Bible — Chapter by Chapter](#inside-the-bible--chapter-by-chapter)
 - [From Research to Real-World Implementation](#from-research-to-real-world-implementation)
-- [Comparing the Three Practical Approaches](#comparing-the-three-practical-approaches)
+- [Comparing the Practical Approaches](#comparing-the-practical-approaches)
 - [Skills and Technical Knowledge Demonstrated](#skills-and-technical-knowledge-demonstrated)
 - [Read the Full HPE Bible](#read-the-full-hpe-bible)
 - [Project Credits and Acknowledgments](#project-credits-and-acknowledgments)
 
 ## The Research Mindset Behind This Work
 
-I am **Mostafa Khaled**, a recent graduate pursuing opportunities in AI Engineering, Machine Learning, Data Science, and Computer Vision. I chose Human Pose Estimation because it exposes the full chain between visual evidence and structured understanding: pixels become features, features become anatomical keypoints, and keypoints must remain geometrically and temporally coherent.
+I am **Mostafa Khaled**, a recent graduate pursuing opportunities in AI Engineering, Machine Learning, Data Science, and Computer Vision. I am developing as a **research-oriented AI / Computer Vision Engineer** because Human Pose Estimation exposes the full chain between visual evidence and structured understanding: pixels become features, features become anatomical keypoints, and keypoints must remain geometrically and temporally coherent.
 
 My interest is therefore not limited to calling a model API or running a pretrained checkpoint. I want to understand why different architectures work, how resolution and representation choices affect learning and inference, which assumptions break under occlusion or depth ambiguity, and how evaluation metrics should influence deployment decisions. This book was a collaborative graduation project; this repository is my portfolio-oriented presentation of that work and of the research-oriented engineering perspective I developed through it.
 
-## Why I Built This Technical Reference
+## Why This Technical Reference Exists
 
 Human Pose Estimation sits at the intersection of several disciplines: classical computer vision, 2D and 3D representations, deep learning, body modeling, geometric and kinematic reasoning, benchmarking, and practical video pipelines. These topics are often taught separately even though a production system must connect them.
 
-The reference was organized to make those relationships easier to navigate—from skeletal and volumetric models, to coordinate regression and heatmaps, to multi-person association, temporal tracking, and deployment trade-offs. It is comprehensive within its stated scope, but it is not intended to be an exhaustive survey of every HPE study or technique.
+The reference was organized as a **structured study** that connects fundamentals, research evolution, modern architectures, and practical implementation—from skeletal and volumetric models, to coordinate regression and heatmaps, to multi-person association, temporal tracking, and deployment trade-offs. It offers broad coverage within its stated scope, but it is not intended to be an exhaustive survey of every HPE study or technique.
 
 ## What This Book Covers
 
@@ -46,11 +53,11 @@ Defines HPE and surveys applications in activity recognition, healthcare, roboti
 
 ### Chapter 2 — Human Pose Estimation Approaches
 
-Builds the modeling vocabulary needed to compare HPE systems: kinematic/skeleton-based, planar/part-based, and volumetric body models; classical and learning-based methods; coordinate regression versus heatmap localization; and single-person versus multi-person estimation. For 3D HPE it covers monocular reconstruction, direct regression, 2D-to-3D lifting, volumetric heatmaps, and multi-view reasoning. The chapter matters because it frames architecture selection as a set of mathematical and engineering trade-offs rather than a search for one universally best model.
+Builds the modeling vocabulary needed to compare HPE systems: kinematic/skeleton-based, planar/part-based, and volumetric body models; classical and learning-based methods; coordinate regression versus heatmap localization; single-person versus multi-person estimation; and top-down versus bottom-up pipelines. For 3D HPE it covers monocular reconstruction, direct regression, 2D-to-3D lifting, volumetric heatmaps, parametric body models, and multi-view reasoning. The chapter matters because it frames architecture selection as a set of mathematical and engineering trade-offs rather than a search for one universally best model.
 
 ### Chapter 3 — HPE Using Deep Learning
 
-The central architecture-focused chapter studies CNN feature extraction, output representations, resolution recovery, skip connections, dilated convolutions, and multi-scale reasoning. It then examines self- and cross-attention, Transformer backbones, Graph Neural Networks for skeletal structure and spatio-temporal reasoning, diffusion-based pose refinement and uncertainty, and emerging vision–language/LLM integration. The reader learns how each family addresses different limitations—localization precision, long-range context, structural consistency, ambiguity, or semantic conditioning. These subjects are analyzed in the book; they should not be read as claims that every architecture was independently implemented in the practical suite.
+The central architecture-focused chapter studies CNN feature extraction, output representations, resolution recovery, skip connections, dilated convolutions, and multi-scale spatial reasoning. It then examines self- and cross-attention, Transformer backbones, Graph Neural Networks for skeletal structure and temporal reasoning, diffusion-based pose refinement and uncertainty, and emerging vision–language/LLM integration. The reader learns how each family addresses different limitations—localization precision, long-range context, structural consistency, ambiguity, or semantic conditioning. These subjects are analyzed in the book; they should not be read as claims that every architecture was independently implemented in the practical suite.
 
 ### Chapter 4 — Taxonomy of HPE Models & Practical Implementation
 
@@ -72,7 +79,7 @@ The practical work explores different ways to solve different pose-estimation pr
 
 **Problem:** Video analysis must estimate keypoints while preserving identity across frames. **Pipeline:** `Video frames → RTMDet → RTMPose → ByteTrack → visualization and tracking`. The implementation combines OpenMMLab’s MMDetection and MMPose ecosystems with RTMPose’s coordinate-classification approach and ByteTrack’s multi-object association. It also documents practical integration concerns such as registry-scope management, track state, confidence thresholds, and temporal consistency. No independent FPS result is claimed here.
 
-## Comparing the Three Practical Approaches
+## Comparing the Practical Approaches
 
 | Approach | Primary objective | Strategy | Core frameworks | Target use case | Tracking | Main trade-off |
 |---|---|---|---|---|---|---|
@@ -91,10 +98,9 @@ The right choice depends on subject scale, crowding, temporal requirements, hard
 
 The practical suite specifically demonstrates YOLOv8-Pose, image tiling, two-stage detection/pose processing, RTMDet, RTMPose, ByteTrack, OpenCV, Ultralytics, MMDetection, and MMPose. GNNs, diffusion, Vision-Language Models, HMR, ViTPose, PoseFormer, and MANO are part of the technical study and taxonomy; their inclusion does not imply implementation in these three case studies.
 
-## Read the Full HPE Bible
+## Book Navigation
 
-- **[Read the source document (DOCX)](docs/HPE-Bible.docx)**
-- **[View the book cover](assets/cover.png)**
+[View the book cover](assets/cover.png)
 
 Quick navigation:
 
@@ -106,13 +112,13 @@ Quick navigation:
 6. [Appendix B — Two-stage YOLOv8](#appendix-b--two-stage-human-pose-estimation)
 7. [Appendix C — RTMPose and tracking](#appendix-c--rtmpose-with-multi-person-tracking)
 
-The repository includes the original DOCX source. A PDF export should be added only after visual and pagination checks confirm that the publication has not changed.
+The PDF is the recommended reading format. The DOCX remains available above for editing and source preservation.
 
 ## Project Credits and Acknowledgments
 
 The graduation project identifies the following contributors:
 
-**Mostafa Khaled · Hadi Shaheen · Marawan Sitten · Mohamed Salah · Mosa Mohamed**
+**Hadi Shaheen · Mostafa Khaled · Marawan Sitten · Mohamed Salah · Mosa Mohamed**
 
 The collaborative source-code repository is [HadiShaheen249/HPE-Bible](https://github.com/HadiShaheen249/HPE-Bible). This repository is Mostafa Khaled’s portfolio presentation of the technical reference and the research-oriented experience developed through the project; it does not claim exclusive ownership of the team’s original implementations.
 
